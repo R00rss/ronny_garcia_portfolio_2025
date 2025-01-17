@@ -1,0 +1,16 @@
+---
+import { defaultLang, languages } from "../i18n/ui";
+---
+
+<ul class="dark:text-white text-black">
+  {
+    Object.entries(languages).map(([lang, label]) => {
+      let link = lang === defaultLang ? "/" : `/${lang}/`;
+      return (
+        <li>
+          <a href={link}>{label}</a>
+        </li>
+      );
+    })
+  }
+</ul>
