@@ -1,8 +1,9 @@
 ---
+import HeaderInfo from "../components/HeaderInfo.astro";
 import LanguagePicker from "../components/LanguagePicker.astro";
 import Navbar from "../components/Navbar.astro";
 import { getLangFromUrl } from "../i18n/utils";
-
+import "@fontsource-variable/inter";
 const lang = getLangFromUrl(Astro.url);
 console.log("lang", lang);
 ---
@@ -13,20 +14,22 @@ console.log("lang", lang);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/styles/global.css" />
     <meta name="viewport" content="width=device-width" />
-    <title>Astro</title>
+    <title>Ronny Garcia | Full stack Developer</title>
   </head>
   <body
-    class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
-      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
-      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]
-      "
+    class="bg-slate-900 leading-relaxed text-slate-400 antialiased selection:bg-primary selection:text-dark"
   >
     <nav>
       <Navbar />
     </nav>
-    <slot />
-    <footer>
-      <LanguagePicker />
-    </footer>
+    <main
+      class="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-16 lg:py-0"
+    >
+      <HeaderInfo />
+      <slot />
+      <footer>
+        <LanguagePicker />
+      </footer>
+    </main>
   </body>
 </html>

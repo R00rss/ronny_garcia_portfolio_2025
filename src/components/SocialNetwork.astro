@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+
+const socialNetworks = [
+  {
+    name: "GitHub",
+    url: "https://github.com/R00rss",
+    icon: "social_networks/GitHub",
+    arialabel: "GitHub (opens in a new tab)",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/ronny-garc%C3%ADa-6673b526b/",
+    icon: "social_networks/LinkedIn",
+    arialabel: "LinkedIn (opens in a new tab)",
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/ronny.garcia.dev/",
+    icon: "social_networks/Instagram",
+    arialabel: "Instagram (opens in a new tab)",
+  },
+];
+---
+
+<nav>
+  <ul class="ml-1 mt-8 flex items-center" aria-label="Social media">
+    {
+      socialNetworks.map((network) => (
+        <li class="mr-5 shrink-0 text-xs">
+          <a
+            class="block hover:text-slate-200"
+            href={network.url}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <span class="sr-only">{network.name}</span>
+            <Icon class="h-6 w-6" name={network.icon} />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
