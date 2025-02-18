@@ -1,7 +1,10 @@
 ---
-import HeaderInfo from "../components/HeaderInfo.astro";
+import Greeting from "../components/Greeting.astro";
 import LanguagePicker from "../components/LanguagePicker.astro";
 import Navbar from "../components/Navbar.astro";
+import SocialNetwork from "../components/SocialNetwork.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import SideBar from "../components/SideBar.astro";
 import { getLangFromUrl } from "../i18n/utils";
 import "@fontsource-variable/inter";
 const lang = getLangFromUrl(Astro.url);
@@ -17,19 +20,48 @@ console.log("lang", lang);
     <title>Ronny Garcia | Full stack Developer</title>
   </head>
   <body
-    class="bg-slate-900 leading-relaxed text-slate-400 antialiased selection:bg-primary selection:text-dark"
+    class="dark:bg-slate-900 bg-slate-100 leading-relaxed text-slate-400 antialiased selection:bg-primary selection:text-dark relative"
   >
-    <nav>
+    <!-- <nav>
       <Navbar />
-    </nav>
+    </nav> -->
+    <header class="flex items-center justify-between sticky top-0 z-10 pb-8 max-w-screen-xl mx-auto px-6 md:px-12 py-4">
+      <LanguagePicker />
+      <ThemeToggle />
+    </header>
     <main
-      class="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-16 lg:py-0"
+      class="mx-auto min-h-screen max-w-screen-xl px-6 md:px-12 relative"
     >
-      <HeaderInfo />
-      <slot />
-      <footer>
-        <LanguagePicker />
-      </footer>
+      <div class="relative flex flex-row">
+        <section class="w-full max-w-xl flex flex-col justify-between border-2 h-[calc(100vh-10rem)] sticky ">
+          <Greeting />
+          <SideBar />
+          <SocialNetwork />
+        </section>
+        <section class="w-full">
+          <!-- <slot /> -->
+           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam delectus dolorem, consectetur aspernatur quaerat voluptatem doloremque quibusdam similique suscipit minus architecto pariatur, assumenda ullam necessitatibus repellendus? Veniam id nisi esse.
+           Magni nostrum itaque debitis nisi id perferendis qui molestiae, iure ab animi! Et, provident. Cupiditate libero dignissimos corrupti nulla aliquam blanditiis tenetur similique? Nihil dicta nam excepturi sint et ducimus.
+           Laudantium maxime illum laboriosam vel nam autem ad vero fuga commodi quasi eligendi totam provident exercitationem aut excepturi iste, blanditiis maiores. Quos inventore eaque, quas ut culpa repellat officiis saepe!
+           Consequuntur voluptatum, sapiente veniam tenetur molestiae vero nam blanditiis suscipit animi facere esse debitis quibusdam placeat ipsa ratione quas earum quo odio quasi voluptate magni repudiandae reprehenderit voluptatibus? Dignissimos, corrupti?
+           Consequatur quod optio odit nemo illo voluptates ex labore ad commodi exercitationem expedita, magnam voluptas provident sapiente quaerat odio sed eos, id similique libero aut vitae cumque qui natus. Impedit?
+           Enim laudantium facere quaerat vel error, hic optio sunt sequi perspiciatis natus similique facilis magni. Natus, adipisci architecto mollitia laudantium excepturi, sapiente quaerat aut cumque corporis reprehenderit, ipsum saepe animi?
+           Molestias dignissimos nostrum, maiores ab ullam hic. Possimus quod illo consequuntur ad est, porro voluptas! Obcaecati facilis laboriosam odit labore quia veritatis! Ea, rerum repellendus nisi est impedit repudiandae eveniet.
+           Ut, omnis corporis consequatur atque numquam suscipit quaerat natus qui. Consequatur nihil illum dolore inventore excepturi necessitatibus, minima, quod aliquam doloribus maxime facere earum cupiditate voluptatem deserunt itaque in iure.
+           Unde maiores, maxime accusantium accusamus ducimus voluptatibus ipsa odio esse quam quos, incidunt laudantium rem quod ipsum vel commodi. Maxime id optio sit assumenda tempore adipisci perspiciatis provident blanditiis voluptate!
+           Atque quibusdam, saepe possimus, dolorem illo eius amet veritatis iusto odit, rerum dicta nam sint dolorum quia! Optio aliquam dolor voluptatibus, distinctio praesentium corporis expedita dignissimos aut soluta, eius reiciendis.
+           Distinctio amet laudantium ad voluptate soluta? Ipsa optio molestias debitis deleniti. Suscipit maxime ad atque perferendis esse voluptate cum, ullam molestias aliquam odit. Voluptatibus suscipit harum, non praesentium deleniti nisi?
+           Distinctio neque magni fugiat at debitis quas? Repudiandae asperiores, provident excepturi alias, fugiat at aliquid nam enim in eius totam debitis, adipisci vero sequi minus voluptates nesciunt tenetur! Fuga, iste.
+           Placeat harum aspernatur eligendi ab, reiciendis est nihil temporibus nesciunt enim officiis iste, facilis velit vero accusantium! Ab dolorem aperiam sint expedita corporis temporibus, labore odio, harum ea, nulla aut.
+           Doloribus officia maxime reprehenderit cupiditate odio ducimus obcaecati quae qui tempore quam? Quidem dolorem omnis laborum repudiandae eos quasi odio, impedit architecto blanditiis. Dicta dolores commodi molestias, eaque temporibus autem!
+           Voluptatum illum quos aliquid praesentium dolor vitae fuga velit a corporis nihil dolorem asperiores enim id cumque quisquam, dolores, mollitia consectetur ipsum laborum aperiam? Commodi iusto similique enim temporibus totam.
+           Magni praesentium eum quia. Quam fuga, esse tenetur voluptates sit eveniet impedit consequatur. Dicta quia animi error aliquid perferendis necessitatibus aperiam, esse vel facere, velit, amet laborum iste possimus totam.
+           Optio est rem dignissimos tempora nam cumque nihil aliquam quo, accusamus, id quasi cupiditate asperiores excepturi error voluptate assumenda fugit possimus nobis beatae et voluptates similique ipsum natus dolor! Incidunt?
+           Corrupti cum libero reprehenderit, inventore doloribus odit sed dignissimos nam nisi facilis pariatur totam est. Iure, aperiam, similique vero quisquam suscipit sint magnam nihil illo ab, aut nemo tempore nam?
+           Dolorem optio accusamus vel inventore facilis, saepe accusantium, obcaecati nihil ipsum distinctio necessitatibus nisi ut voluptas, autem dicta. Accusantium eius autem placeat magni hic perferendis nulla blanditiis, optio dolorem architecto.
+           Totam voluptate modi corrupti voluptatem nostrum ut doloremque at? Eligendi corrupti suscipit, laborum commodi ea architecto ut consectetur, nobis libero rerum cumque sequi neque quisquam natus unde voluptates temporibus maxime?
+        </section>
+      </div>
     </main>
   </body>
 </html>

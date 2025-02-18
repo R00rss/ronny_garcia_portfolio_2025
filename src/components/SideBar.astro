@@ -1,0 +1,52 @@
+---
+import type { defaultLang, ui } from "../i18n/ui";
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from "../i18n/utils";
+
+const options: {
+  label: keyof (typeof ui)[typeof defaultLang];
+  href: string;
+}[] = [
+  {
+    label: "nav.about",
+    href: "#about",
+  },
+  {
+    label: "nav.experience",
+    href: "#experience",
+  },
+  {
+    label: "nav.projects",
+    href: "#projects",
+  },
+];
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const selected = "nav.experience";
+---
+
+<aside class="py-6">
+  <nav class="flex flex-col gap-y-3">
+    {
+      options.map((option) => {
+        const isSelected = selected === option.label;
+        const styles = isSelected ? "w-20 bg-slate-700 dark:bg-slate-200" : "w-10 bg-slate-300 dark:bg-slate-700";
+        return (
+          <div class="flex items-center justify-start gap-x-6">
+            <span class={`h-[2px] ${styles} rounded-full`} />
+            <a
+              class="block text-sm font-semibold uppercase tracking-wider"
+              href={option.href}
+            >
+              {t(option.label)}
+            </a>
+          </div>
+        );
+      })
+    }
+  </nav>
+</aside>

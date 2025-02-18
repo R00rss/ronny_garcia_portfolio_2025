@@ -1,10 +1,27 @@
 ---
+import { defaultLang, ui } from "../i18n/ui";
 import {
   getLangFromUrl,
   useTranslatedPath,
   useTranslations,
 } from "../i18n/utils";
 import ThemeToggle from "./ThemeToggle.astro";
+
+type Option = {
+  label: keyof (typeof ui)[typeof defaultLang];
+  path: string;
+};
+
+const options: Option[] = [
+  {
+    path: "/experience/",
+    label: "nav.experience",
+  },
+  {
+    path: "/about/",
+    label: "nav.about",
+  },
+];
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -14,16 +31,19 @@ const translatePath = useTranslatedPath(lang);
 <ul
   class="dark:text-primary text-black flex items-center justify-center text-2xl gap-x-2"
 >
-  <li>
-    <a href={translatePath("/experience/")}>
-      {t("nav.experience")}
-    </a>
-  </li>
-  <li>
-    <a href={translatePath("/about/")}>
-      {t("nav.about")}
-    </a>
-  </li>
+  {
+    options.map((option) => {
+      console.log(option.label);
+      console.log(t(option.label as keyof (typeof ui)[typeof defaultLang]));
+      return (
+        <li>
+          <a href={translatePath(option.path)}>
+            {t(option.label as keyof (typeof ui)[typeof defaultLang])}
+          </a>
+        </li>
+      );
+    })
+  }
   <li>
     <ThemeToggle />
   </li>

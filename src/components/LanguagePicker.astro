@@ -2,15 +2,42 @@
 import { defaultLang, languages } from "../i18n/ui";
 ---
 
-<ul class="dark:text-white text-black">
+<ul class="flex text-xs dark:shadow-[0px_0px_8px_-3px_#ffffff] shadow-[0px_0px_8px_-3px_#000000] w-max rounded-full p-0.5"> 
   {
     Object.entries(languages).map(([lang, label]) => {
-      let link = lang === defaultLang ? "/" : `/${lang}/`;
+      const link = lang === defaultLang ? "/" : `/${lang}/`;
       return (
-        <li>
-          <a href={link}>{label}</a>
+        <li
+          data-language={lang}
+          class="rounded-full text-gray-500 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 duration-300"
+        >
+          <a class="px-2 py-1 block text-base" href={link}>{lang}</a>
         </li>
       );
     })
   }
 </ul>
+
+<script is:inline>
+  const languages = ["en", "es"];
+  const defaultLang = "en";
+  const url = new URL(window.location.href);
+  let lang = url.pathname.split("/")?.[1] ?? defaultLang;
+  if (!languages.includes(lang)) {
+    lang = defaultLang;
+  }
+
+  console.log({ lang });
+  const selectedLi = document.querySelector(`[data-language="${lang}"]`);
+  // style the background color
+  selectedLi.classList.add("dark:bg-primary");
+  selectedLi.classList.add("bg-primary/60");
+  // style the text color
+  selectedLi.classList.remove("dark:text-slate-200");
+  selectedLi.classList.add("dark:text-black");
+  //style the hover effect
+  selectedLi.classList.remove("hover:bg-slate-200");
+  selectedLi.classList.remove("dark:hover:bg-slate-700");
+  
+  console.log({ selectedLi });
+</script>

@@ -5,6 +5,9 @@
   font-family: "Inter Variable", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 .sr-only {
   position: absolute;
   width: 1px;

@@ -1,8 +1,27 @@
 ---
-const language = (typeof navigator !== "undefined" && navigator.language) || "en"; // Detecta el idioma del navegador
-const isSpanish = language.startsWith("es"); // Verifica si el idioma es español
-const redirectUrl = isSpanish ? "/es/experience" : "/experience";
+import Base from "../layouts/Base.astro";
+
+// const language = (typeof navigator !== "undefined" && navigator.language) || "en"; // Detecta el idioma del navegador
+// const isSpanish = language.startsWith("es"); // Verifica si el idioma es español
+// const redirectUrl = isSpanish ? "/es/experience" : "/experience";
+// <head>
+//   <meta http-equiv="refresh" content={`0; url=${redirectUrl}`} />
+// </head>
+
 ---
-<head>
-  <meta http-equiv="refresh" content={`0; url=${redirectUrl}`} />
-</head>
+
+<Base>
+    <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus excepturi aliquam accusamus aperiam sunt eius aspernatur deleniti in architecto distinctio necessitatibus enim possimus corrupti cumque porro, eligendi assumenda illo amet?
+    Temporibus, corrupti architecto neque nemo, laudantium tempora nihil voluptates autem sed a libero cupiditate placeat error blanditiis in reiciendis adipisci sapiente fugit consequuntur totam. Perspiciatis sequi possimus deleniti natus commodi!
+    Ipsa, eligendi blanditiis. Saepe labore delectus, magnam, rem ipsam ipsum nam, inventore aliquid qui perspiciatis porro possimus aliquam deleniti facere asperiores numquam vitae dolorem. Eum sequi non sapiente incidunt veritatis?
+    Ea eligendi aliquam quam doloribus vel perspiciatis, soluta minima numquam omnis eos iusto voluptas cum neque non, eius dolorem laborum laudantium in nesciunt totam dolorum recusandae, quod iste dignissimos? Rerum?
+    Quis aliquam non nam doloremque qui voluptatibus praesentium amet voluptas? Id sapiente eaque reiciendis, iure magnam iusto veritatis earum dicta blanditiis perspiciatis aspernatur amet atque corporis soluta? Eaque, impedit hic.
+    Fugiat modi ipsa in ipsum molestias? Dignissimos, quas distinctio amet fugiat ad dolorem molestiae totam delectus harum voluptatem doloremque voluptas? Unde, voluptatum! Eum, aperiam iste incidunt fuga impedit distinctio culpa?
+    Ex nam ea, officia explicabo, maiores rerum blanditiis totam alias natus incidunt exercitationem voluptatem deleniti pariatur, voluptas qui vitae itaque minus accusamus ratione dicta numquam repudiandae distinctio quo quasi. Voluptatibus.
+    Voluptates harum, esse eius ducimus nisi nihil quasi dolores tempora deserunt fuga ipsa quod odit pariatur error est? Repudiandae reiciendis fugiat dicta quod deserunt modi perferendis, magni dignissimos optio obcaecati.
+    Laudantium at reiciendis consequatur voluptatem? Laborum cupiditate, fuga quis in sed dignissimos ut similique pariatur nihil ipsam. Adipisci similique consequatur veritatis deleniti, ex aliquid dolores earum est aut voluptates illum.
+    Tenetur odio accusamus quo nemo, at reiciendis voluptatibus dicta ullam exercitationem asperiores porro quaerat. Dicta animi necessitatibus odio ratione est vitae dolorum voluptatibus tenetur maxime. Beatae omnis voluptate officia commodi.</div>
+    <div id="projects"></div>
+</Base>
+
+<script is:inline></script>
