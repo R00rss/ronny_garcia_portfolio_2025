@@ -2,7 +2,7 @@
 import { defaultLang, languages } from "../i18n/ui";
 ---
 
-<ul class="flex text-xs dark:shadow-[0px_0px_8px_-3px_#ffffff] shadow-[0px_0px_8px_-3px_#000000] w-max rounded-full p-0.5"> 
+<ul class="bg-white dark:bg-transparent flex text-xs dark:shadow-[0px_0px_8px_-3px_#ffffff] shadow-[0px_0px_8px_-3px_#000000] w-max rounded-full p-0.5"> 
   {
     Object.entries(languages).map(([lang, label]) => {
       const link = lang === defaultLang ? "/" : `/${lang}/`;

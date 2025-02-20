@@ -111,7 +111,7 @@
     transform: translateX(-1.25em);
   }
   .switch__inner:before {
-    background-color: #52D2B8;
+    background-color: #52d2b8;
     border-radius: inherit;
     content: "";
     display: block;
@@ -154,7 +154,6 @@
   }
   .switch__input:checked ~ .switch__icon {
     color: hsla(var(--hue), 10%, 40%);
-    
   }
   .switch__input:checked ~ .switch__inner:before,
   .switch__input:checked ~ .switch__inner-icons {
@@ -199,6 +198,7 @@
   }
 
   function updateTheme() {
+    console.log("updateTheme");
     if (remove != null) {
       remove();
     }
@@ -214,6 +214,25 @@
       (themePreference === "system" && matchMedia.matches);
 
     document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+    //TODO: this work but this references should be on Base.astro
+
+    const mouseEffect = document.querySelector(".mouse-effect");
+    // if mouseEffect is null retry on 100ms
+    if (!mouseEffect) {
+      setTimeout(() => {
+        updateTheme();
+      }, 100);
+      return;
+    }
+
+    if (isDark) {
+      mouseEffect.classList.add("mouse-effect-dark");
+      mouseEffect.classList.remove("mouse-effect-light");
+    } else {
+      mouseEffect.classList.add("mouse-effect-light");
+      mouseEffect.classList.remove("mouse-effect-dark");
+    }
   }
 
   updateTheme();
@@ -230,7 +249,8 @@
     updateTheme();
     window.scrollTo({ left: 0, top: 0, behavior: "instant" });
   });
-  
+
   const themePreference = getThemePreference();
   switchInput.checked = themePreference === "dark";
+  console.log({ matchMedia });
 </script>

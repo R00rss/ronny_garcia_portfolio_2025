@@ -1,12 +1,14 @@
 ---
 import Greeting from "../components/Greeting.astro";
 import LanguagePicker from "../components/LanguagePicker.astro";
-import Navbar from "../components/Navbar.astro";
 import SocialNetwork from "../components/SocialNetwork.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import SideBar from "../components/SideBar.astro";
 import { getLangFromUrl } from "../i18n/utils";
 import "@fontsource-variable/inter";
+import AboutMe from "../components/AboutMe.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
 const lang = getLangFromUrl(Astro.url);
 console.log("lang", lang);
 ---
@@ -20,48 +22,113 @@ console.log("lang", lang);
     <title>Ronny Garcia | Full stack Developer</title>
   </head>
   <body
-    class="dark:bg-slate-900 bg-slate-100 leading-relaxed text-slate-400 antialiased selection:bg-primary selection:text-dark relative"
+    id="body-container"
+    class="overflow-x-hidden relative dark:bg-slate-900 bg-slate-100 leading-relaxed text-slate-400 antialiased selection:bg-primary selection:text-dark"
   >
     <!-- <nav>
       <Navbar />
     </nav> -->
-    <header class="flex items-center justify-between sticky top-0 z-10 pb-8 max-w-screen-xl mx-auto px-6 md:px-12 py-4">
+    <header
+      class="flex items-center justify-between fixed top-0 z-10 pb-8 w-full max-w-screen-xl px-6 md:px-12 py-4 left-1/2 transform -translate-x-1/2"
+    >
       <LanguagePicker />
       <ThemeToggle />
     </header>
-    <main
-      class="mx-auto min-h-screen max-w-screen-xl px-6 md:px-12 relative"
-    >
+    <main class="mx-auto max-w-screen-xl px-6 md:px-12 relative">
       <div class="relative flex flex-row">
-        <section class="w-full max-w-xl flex flex-col justify-between border-2 h-[calc(100vh-10rem)] sticky ">
-          <Greeting />
-          <SideBar />
+        <section
+          class="w-full max-w-[500px] flex flex-col justify-between max-h-screen sticky top-0 py-24"
+        >
+          <div class="flex flex-col gap-y-20">
+            <Greeting />
+            <SideBar />
+          </div>
           <SocialNetwork />
         </section>
         <section class="w-full">
+          <AboutMe />
+          <Experience />
+          <Projects />
           <!-- <slot /> -->
-           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam delectus dolorem, consectetur aspernatur quaerat voluptatem doloremque quibusdam similique suscipit minus architecto pariatur, assumenda ullam necessitatibus repellendus? Veniam id nisi esse.
-           Magni nostrum itaque debitis nisi id perferendis qui molestiae, iure ab animi! Et, provident. Cupiditate libero dignissimos corrupti nulla aliquam blanditiis tenetur similique? Nihil dicta nam excepturi sint et ducimus.
-           Laudantium maxime illum laboriosam vel nam autem ad vero fuga commodi quasi eligendi totam provident exercitationem aut excepturi iste, blanditiis maiores. Quos inventore eaque, quas ut culpa repellat officiis saepe!
-           Consequuntur voluptatum, sapiente veniam tenetur molestiae vero nam blanditiis suscipit animi facere esse debitis quibusdam placeat ipsa ratione quas earum quo odio quasi voluptate magni repudiandae reprehenderit voluptatibus? Dignissimos, corrupti?
-           Consequatur quod optio odit nemo illo voluptates ex labore ad commodi exercitationem expedita, magnam voluptas provident sapiente quaerat odio sed eos, id similique libero aut vitae cumque qui natus. Impedit?
-           Enim laudantium facere quaerat vel error, hic optio sunt sequi perspiciatis natus similique facilis magni. Natus, adipisci architecto mollitia laudantium excepturi, sapiente quaerat aut cumque corporis reprehenderit, ipsum saepe animi?
-           Molestias dignissimos nostrum, maiores ab ullam hic. Possimus quod illo consequuntur ad est, porro voluptas! Obcaecati facilis laboriosam odit labore quia veritatis! Ea, rerum repellendus nisi est impedit repudiandae eveniet.
-           Ut, omnis corporis consequatur atque numquam suscipit quaerat natus qui. Consequatur nihil illum dolore inventore excepturi necessitatibus, minima, quod aliquam doloribus maxime facere earum cupiditate voluptatem deserunt itaque in iure.
-           Unde maiores, maxime accusantium accusamus ducimus voluptatibus ipsa odio esse quam quos, incidunt laudantium rem quod ipsum vel commodi. Maxime id optio sit assumenda tempore adipisci perspiciatis provident blanditiis voluptate!
-           Atque quibusdam, saepe possimus, dolorem illo eius amet veritatis iusto odit, rerum dicta nam sint dolorum quia! Optio aliquam dolor voluptatibus, distinctio praesentium corporis expedita dignissimos aut soluta, eius reiciendis.
-           Distinctio amet laudantium ad voluptate soluta? Ipsa optio molestias debitis deleniti. Suscipit maxime ad atque perferendis esse voluptate cum, ullam molestias aliquam odit. Voluptatibus suscipit harum, non praesentium deleniti nisi?
-           Distinctio neque magni fugiat at debitis quas? Repudiandae asperiores, provident excepturi alias, fugiat at aliquid nam enim in eius totam debitis, adipisci vero sequi minus voluptates nesciunt tenetur! Fuga, iste.
-           Placeat harum aspernatur eligendi ab, reiciendis est nihil temporibus nesciunt enim officiis iste, facilis velit vero accusantium! Ab dolorem aperiam sint expedita corporis temporibus, labore odio, harum ea, nulla aut.
-           Doloribus officia maxime reprehenderit cupiditate odio ducimus obcaecati quae qui tempore quam? Quidem dolorem omnis laborum repudiandae eos quasi odio, impedit architecto blanditiis. Dicta dolores commodi molestias, eaque temporibus autem!
-           Voluptatum illum quos aliquid praesentium dolor vitae fuga velit a corporis nihil dolorem asperiores enim id cumque quisquam, dolores, mollitia consectetur ipsum laborum aperiam? Commodi iusto similique enim temporibus totam.
-           Magni praesentium eum quia. Quam fuga, esse tenetur voluptates sit eveniet impedit consequatur. Dicta quia animi error aliquid perferendis necessitatibus aperiam, esse vel facere, velit, amet laborum iste possimus totam.
-           Optio est rem dignissimos tempora nam cumque nihil aliquam quo, accusamus, id quasi cupiditate asperiores excepturi error voluptate assumenda fugit possimus nobis beatae et voluptates similique ipsum natus dolor! Incidunt?
-           Corrupti cum libero reprehenderit, inventore doloribus odit sed dignissimos nam nisi facilis pariatur totam est. Iure, aperiam, similique vero quisquam suscipit sint magnam nihil illo ab, aut nemo tempore nam?
-           Dolorem optio accusamus vel inventore facilis, saepe accusantium, obcaecati nihil ipsum distinctio necessitatibus nisi ut voluptas, autem dicta. Accusantium eius autem placeat magni hic perferendis nulla blanditiis, optio dolorem architecto.
-           Totam voluptate modi corrupti voluptatem nostrum ut doloremque at? Eligendi corrupti suscipit, laborum commodi ea architecto ut consectetur, nobis libero rerum cumque sequi neque quisquam natus unde voluptates temporibus maxime?
         </section>
       </div>
     </main>
+    <div class="mouse-effect mouse-effect-dark"></div>
   </body>
 </html>
+
+<style>
+  :root {
+    --size: 200px;
+    /* for dark mode */
+    --primary-dark: #1c1fd318;
+    --primary-dark-shadow: #1c1fd302;
+    /* for light mode */
+    --primary-light: #e6f4fa;
+    --primary-light-shadow: #abcadb02;
+  }
+  .mouse-effect {
+    scale: 0.3;
+    position: absolute;
+    z-index: -1;
+    top: 100px;
+    left: 100px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 9999px;
+  }
+  .mouse-effect-dark {
+    background-color: var(--primary-dark);
+    box-shadow:
+      0 0 1000px 100px var(--primary-dark-shadow),
+      0 0 1000px 200px var(--primary-dark-shadow),
+      0 0 1000px 300px var(--primary-dark-shadow),
+      0 0 1000px 400px var(--primary-dark-shadow),
+      0 0 1000px 500px var(--primary-dark-shadow),
+      0 0 1000px 600px var(--primary-dark-shadow),
+      0 0 1000px 700px var(--primary-dark-shadow),
+      0 0 1000px 800px var(--primary-dark-shadow),
+      0 0 1000px 900px var(--primary-dark-shadow),
+      0 0 1000px 1000px var(--primary-dark-shadow),
+      0 0 1000px 1100px var(--primary-dark-shadow),
+      0 0 1000px 1200px var(--primary-dark-shadow),
+      0 0 1000px 1300px var(--primary-dark-shadow);
+  }
+
+  .mouse-effect-light {
+    background-color: var(--primary-light);
+    box-shadow:
+      0 0 1000px 100px var(--primary-light-shadow),
+      0 0 1000px 200px var(--primary-light-shadow),
+      0 0 1000px 300px var(--primary-light-shadow),
+      0 0 1000px 400px var(--primary-light-shadow),
+      0 0 1000px 500px var(--primary-light-shadow),
+      0 0 1000px 600px var(--primary-light-shadow),
+      0 0 1000px 700px var(--primary-light-shadow),
+      0 0 1000px 800px var(--primary-light-shadow),
+      0 0 1000px 900px var(--primary-light-shadow),
+      0 0 1000px 1000px var(--primary-light-shadow),
+      0 0 1000px 1100px var(--primary-light-shadow),
+      0 0 1000px 1200px var(--primary-light-shadow),
+      0 0 1000px 1300px var(--primary-light-shadow);
+  }
+</style>
+
+<script is:inline>
+  function mouseLogic() {
+    const bodyContainer = document.querySelector("#body-container");
+    const mouseEffect = document.querySelector(".mouse-effect");
+
+    const size = 200;
+
+    function getMouseCoordinates(event) {
+      const { pageX, pageY } = event;
+      const x = pageX - size / 2;
+      const y = pageY - size / 2;
+      mouseEffect.style.left = `${x}px`;
+      mouseEffect.style.top = `${y}px`;
+    }
+    bodyContainer.addEventListener("mousemove", getMouseCoordinates);
+  }
+  mouseLogic();
+</script>

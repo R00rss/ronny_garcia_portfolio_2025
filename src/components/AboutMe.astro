@@ -1,0 +1,21 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const sectionName = "about";
+
+const paragraphs = [
+  t("section.about1"),
+  t("section.about2"),
+  t("section.about3"),
+  t("section.about4"),
+];
+---
+
+<div id={sectionName} class="w-full pt-28 pb-10">
+  <div class="flex flex-col gap-y-4">
+    {paragraphs.map((paragraph) => <p class="">{paragraph}</p>)}
+  </div>
+</div>
