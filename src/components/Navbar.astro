@@ -33,8 +33,6 @@ const translatePath = useTranslatedPath(lang);
 >
   {
     options.map((option) => {
-      console.log(option.label);
-      console.log(t(option.label as keyof (typeof ui)[typeof defaultLang]));
       return (
         <li>
           <a href={translatePath(option.path)}>

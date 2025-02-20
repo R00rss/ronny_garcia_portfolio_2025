@@ -27,7 +27,6 @@ import { defaultLang, languages } from "../i18n/ui";
     lang = defaultLang;
   }
 
-  console.log({ lang });
   const selectedLi = document.querySelector(`[data-language="${lang}"]`);
   // style the background color
   selectedLi.classList.add("dark:bg-primary");
@@ -38,6 +37,4 @@ import { defaultLang, languages } from "../i18n/ui";
   //style the hover effect
   selectedLi.classList.remove("hover:bg-slate-200");
   selectedLi.classList.remove("dark:hover:bg-slate-700");
-  
-  console.log({ selectedLi });
 </script>

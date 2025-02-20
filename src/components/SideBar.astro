@@ -116,7 +116,6 @@ const t = useTranslations(lang);
         const isInViewport = scrollPosition >= entries[i][1];
         if (isInViewport) {
           selectedId = entries[i][0];
-          console.log({ selectedId });
           break;
         }
       }
@@ -127,7 +126,6 @@ const t = useTranslations(lang);
           sideBarItems[i].classList.remove("selected");
 
           const span = sideBarItems[i].nextElementSibling;
-          console.log({ span });
           span?.classList.add("not-selected-text");
           span?.classList.remove("selected-text");
         } else {
@@ -135,7 +133,6 @@ const t = useTranslations(lang);
           sideBarItems[i].classList.remove("not-selected");
 
           const span = sideBarItems[i].nextElementSibling;
-          console.log({ span });
           span?.classList.remove("not-selected-text");
           span?.classList.add("selected-text");
         }

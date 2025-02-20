@@ -10,7 +10,6 @@ import AboutMe from "../components/AboutMe.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 const lang = getLangFromUrl(Astro.url);
-console.log("lang", lang);
 ---
 
 <html lang={lang}>
@@ -111,6 +110,30 @@ console.log("lang", lang);
       0 0 1000px 1100px var(--primary-light-shadow),
       0 0 1000px 1200px var(--primary-light-shadow),
       0 0 1000px 1300px var(--primary-light-shadow);
+  }
+
+  /* Para navegadores WebKit */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: theme("colors.secondary");
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: theme("colors.primary");
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme("colors.primary/20");
+  }
+
+  /* Para Firefox */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: theme("colors.primary") theme("colors.secondary");
   }
 </style>
 

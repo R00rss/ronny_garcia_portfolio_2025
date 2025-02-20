@@ -198,7 +198,6 @@
   }
 
   function updateTheme() {
-    console.log("updateTheme");
     if (remove != null) {
       remove();
     }
@@ -238,8 +237,6 @@
   updateTheme();
 
   switchInput.addEventListener("change", (e) => {
-    console.log("change");
-    console.log(e.target.checked);
     const isDark = e.target.checked;
     localStorage.setItem("theme", isDark ? "dark" : "light");
     updateTheme();
@@ -252,5 +249,4 @@
 
   const themePreference = getThemePreference();
   switchInput.checked = themePreference === "dark";
-  console.log({ matchMedia });
 </script>
