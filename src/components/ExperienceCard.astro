@@ -1,0 +1,12 @@
+---
+import type { CardItem } from "@/models/Card";
+import Card from "./Card.astro";
+
+type Props = {
+  item: CardItem;
+};
+
+const { item } = Astro.props;
+---
+
+<Card item={item} />

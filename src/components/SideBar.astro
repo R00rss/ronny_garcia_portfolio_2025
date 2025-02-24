@@ -1,32 +1,6 @@
 ---
-import type { defaultLang, ui } from "../i18n/ui";
-import {
-  getLangFromUrl,
-  useTranslatedPath,
-  useTranslations,
-} from "../i18n/utils";
-
-const options: {
-  label: keyof (typeof ui)[typeof defaultLang];
-  href: string;
-  id: string;
-}[] = [
-  {
-    id: "about",
-    label: "nav.about",
-    href: "#about",
-  },
-  {
-    id: "experience",
-    label: "nav.experience",
-    href: "#experience",
-  },
-  {
-    id: "projects",
-    label: "nav.projects",
-    href: "#projects",
-  },
-];
+import { sectionItems } from "@/data/Sections";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -36,7 +10,7 @@ const t = useTranslations(lang);
   <nav>
     <ul class="flex flex-col">
       {
-        options.map((option, i) => {
+        sectionItems.map((option, i) => {
           const isFirst = i === 0;
           const style = isFirst ? "selected" : "not-selected";
           const styleText = isFirst ? "selected-text" : "not-selected-text";

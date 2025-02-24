@@ -1,0 +1,82 @@
+---
+import type { CardItem } from "@/models/Card";
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  item: CardItem;
+};
+
+const { item } = Astro.props;
+const isItemEmpty = item.url === "";
+---
+
+{
+  isItemEmpty ? (
+    <li>
+      <div class="group flex flex-col xl:flex-row gap-x-5 gap-y-2 pt-4 pb-6 px-4 rounded-lg duration-100 cursor-pointer dark:hover:bg-gray-50/5 hover:bg-primary/10">
+        <div>
+          <p class="text-sm mt-1 w-max min-w-48 text-gray-500 dark:text-gray-400 font-medium">
+            {item.date}
+          </p>
+        </div>
+        <div class="">
+          <header class="flex gap-x-2 mb-2">
+            <h2 class="text-base font-medium text-gray-600 dark:text-gray-300 group-hover:text-primary">
+              {item.title}
+            </h2>
+            <Icon
+              name={"ArrowUpRight"}
+              class="duration-200 group-hover:translate-y-1.5 group-hover:-translate-x-0.5 translate-y-2 -translate-x-1.5 size-3 font-medium text-gray-600 dark:text-gray-300 group-hover:text-primary"
+            />
+          </header>
+          <p class="text-sm mb-6 text-gray-500 dark:text-gray-400">
+            {item.description}
+          </p>
+          <ul class="flex flex-wrap gap-x-2 gap-y-1">
+            {item.technologies.map((technology) => (
+              <li class="text-xs text-primary bg-primary/10 px-3 py-1 rounded-full">
+                {technology}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </li>
+  ) : (
+    <li>
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group flex flex-col xl:flex-row gap-x-5 gap-y-2 pt-4 pb-6 px-4 rounded-lg duration-100 cursor-pointer dark:hover:bg-gray-50/5 hover:bg-primary/10"
+      >
+        <div>
+          <p class="text-sm mt-1 w-max min-w-48 text-gray-500 dark:text-gray-400 font-medium">
+            {item.date}
+          </p>
+        </div>
+        <div class="">
+          <header class="flex gap-x-2 mb-2">
+            <h2 class="text-base font-medium text-gray-600 dark:text-gray-300 group-hover:text-primary">
+              {item.title}
+            </h2>
+            <Icon
+              name={"ArrowUpRight"}
+              class="duration-200 group-hover:translate-y-1.5 group-hover:-translate-x-0.5 translate-y-2 -translate-x-1.5 size-3 font-medium text-gray-600 dark:text-gray-300 group-hover:text-primary"
+            />
+          </header>
+          <p class="text-sm mb-6 text-gray-500 dark:text-gray-400">
+            {item.description}
+          </p>
+          <ul class="flex flex-wrap gap-x-2 gap-y-1">
+            {item.technologies.map((technology) => (
+              <li class="text-xs text-primary bg-primary/10 px-3 py-1 rounded-full">
+                {technology}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </a>
+    </li>
+  )
+}

@@ -26,11 +26,8 @@ const lang = getLangFromUrl(Astro.url);
     id="body-container"
     class="overflow-x-hidden relative dark:bg-slate-900 bg-slate-100 leading-relaxed text-slate-400 antialiased selection:bg-primary selection:text-dark"
   >
-    <!-- <nav>
-      <Navbar />
-    </nav> -->
     <header
-      class="flex items-center justify-between fixed top-0 z-10 pb-8 w-full max-w-screen-xl px-6 md:px-12 py-4 left-1/2 transform -translate-x-1/2"
+      class="flex items-center justify-between fixed top-0 z-30 pb-8 w-full max-w-screen-xl px-6 md:px-12 py-4 left-1/2 transform -translate-x-1/2"
     >
       <LanguagePicker />
       <ThemeToggle />
@@ -39,7 +36,7 @@ const lang = getLangFromUrl(Astro.url);
       class="mx-auto max-w-screen-xl px-6 md:px-12 relative flex flex-col sm:flex-row gap-2"
     >
       <section
-        class="w-full sm:max-w-[450px] flex flex-col justify-between max-h-screen sm:sticky top-0 pt-20 pb-10 sm:pt-24"
+        class="z-20 w-full sm:max-w-[270px] md:max-w-[400px] flex flex-col justify-between max-h-screen sm:sticky top-0 pt-20 pb-10 sm:pt-24"
       >
         <div class="flex flex-col gap-y-4 sm:gap-y-20">
           <Greeting />

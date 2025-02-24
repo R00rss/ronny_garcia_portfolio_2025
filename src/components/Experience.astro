@@ -1,62 +1,15 @@
 ---
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import SectionLayout from "@/layouts/SectionLayout.astro";
-import { Icon } from "astro-icon/components";
+import ExperienceCard from "./ExperienceCard.astro";
+import { getExperienceItems } from "@/data/Experience";
 
 const sectionName = "experience";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-type ExperienceItem = {
-  id: number;
-  title: string;
-  date: string;
-  description: string;
-  technologies: string[];
-  url: string;
-};
-
-const experience_items: ExperienceItem[] = [
-  {
-    id: 1,
-    title: `${t("experience.mern_stack_ec.role")} - ${t("experience.mern_stack_ec.name")}`,
-    date: `${t("month.june")} 2024 — ${t("month.january")} 2025`,
-    description: t("experience.mern_stack_ec.description"),
-    technologies: ["React", "Next.js", "Typescript", "C#", ".NET"],
-    url: "",
-  },
-  {
-    id: 2,
-    title: `${t("experience.llacsaa.role")} - ${t("experience.llacsaa.name")}`,
-    date: `${t("month.june")} 2023 — ${t("month.june")} 2024`,
-    description: t("experience.llacsaa.description"),
-    technologies: [
-      "Angular",
-      "Spring boot",
-      "Flask",
-      "NodeJs",
-      "Docker",
-      "Oracle SQL",
-    ],
-    url: "https://llacsaa.com/",
-  },
-  {
-    id: 3,
-    title: `${t("experience.kimobill.role")} - ${t("experience.kimobill.name")}`,
-    date: `${t("month.may")} 2022 — ${t("month.june")} 2023`,
-    description: t("experience.kimobill.description"),
-    technologies: [
-      "React",
-      "NodeJs",
-      "Flask",
-      "Typescript",
-      "MySQL",
-      "MongoDB",
-    ],
-    url: "https://www.kimobill.com/",
-  },
-];
+const experience_items = getExperienceItems(t);
 ---
 
 <SectionLayout {sectionName}>
@@ -64,79 +17,6 @@ const experience_items: ExperienceItem[] = [
     {t("nav.experience")}
   </h1>
   <ul>
-    {
-      experience_items.map((item) => {
-        if (item.url === "") {
-          return (
-            <li class="group flex flex-col xl:flex-row gap-x-5 gap-y-2 pt-4 pb-6 px-4 rounded-lg duration-100 cursor-pointer dark:hover:bg-gray-50/5 hover:bg-primary/10">
-              <div>
-                <p class="text-sm mt-1 w-max text-gray-500 dark:text-gray-400 font-medium">
-                  {item.date}
-                </p>
-              </div>
-              <div class="">
-                <header class="flex gap-x-2 mb-2">
-                  <h2 class="text-base font-medium text-gray-600 dark:text-gray-300 group-hover:text-primary">
-                    {item.title}
-                  </h2>
-                  <Icon
-                    name={"ArrowUpRight"}
-                    class="duration-200 group-hover:translate-y-1.5 group-hover:-translate-x-0.5 translate-y-2 -translate-x-1.5 size-3 font-medium text-gray-600 dark:text-gray-300 group-hover:text-primary"
-                  />
-                </header>
-                <p class="text-sm mb-6 text-gray-500 dark:text-gray-400">
-                  {item.description}
-                </p>
-                <ul class="flex flex-wrap gap-x-2 gap-y-1">
-                  {item.technologies.map((technology) => (
-                    <li class="text-xs text-primary bg-primary/10 px-3 py-1 rounded-full">
-                      {technology}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          );
-        } else {
-          return (
-            <li>
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group flex flex-col xl:flex-row gap-x-5 gap-y-2 pt-4 pb-6 px-4 rounded-lg duration-100 cursor-pointer dark:hover:bg-gray-50/5 hover:bg-primary/10"
-              >
-                <div>
-                  <p class="text-sm mt-1 w-max text-gray-500 dark:text-gray-400 font-medium">
-                    {item.date}
-                  </p>
-                </div>
-                <div class="">
-                  <header class="flex gap-x-2 mb-2">
-                    <h2 class="text-base font-medium text-gray-600 dark:text-gray-300 group-hover:text-primary">
-                      {item.title}
-                    </h2>
-                    <Icon
-                      name={"ArrowUpRight"}
-                      class="duration-200 group-hover:translate-y-1.5 group-hover:-translate-x-0.5 translate-y-2 -translate-x-1.5 size-3 font-medium text-gray-600 dark:text-gray-300 group-hover:text-primary"
-                    />
-                  </header>
-                  <p class="text-sm mb-6 text-gray-500 dark:text-gray-400">
-                    {item.description}
-                  </p>
-                  <ul class="flex flex-wrap gap-x-2 gap-y-1">
-                    {item.technologies.map((technology) => (
-                      <li class="text-xs text-primary bg-primary/10 px-3 py-1 rounded-full">
-                        {technology}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </a>
-            </li>
-          );
-        }
-      })
-    }
+    {experience_items.map((item) => <ExperienceCard item={item} />)}
   </ul>
 </SectionLayout>
