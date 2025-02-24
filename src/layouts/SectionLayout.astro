@@ -1,0 +1,10 @@
+---
+type Props = {
+  sectionName: string;
+};
+const { sectionName } = Astro.props;
+---
+
+<div id={sectionName} class="w-full pt-16 sm:pt-28 pb-10">
+    <slot />
+</div>

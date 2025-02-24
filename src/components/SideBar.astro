@@ -93,50 +93,57 @@ const t = useTranslations(lang);
   }
 </style>
 
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const sideBarItems = document.querySelectorAll("[data-id-sidebar]");
-    let selectedId = sideBarItems?.[0]?.dataset.idSidebar ?? "";
+<script>
+  const sideBarItems = document.querySelectorAll(
+    "[data-id-sidebar]"
+  ) as NodeListOf<HTMLSpanElement>;
 
-    const sectionsElements = {
-      about: document.getElementById("about"),
-      experience: document.getElementById("experience"),
-      projects: document.getElementById("projects"),
-    };
+  let selectedId = sideBarItems?.[0]?.dataset.idSidebar ?? "";
 
-    const sectionPositions = {};
-    for (const id in sectionsElements) {
-      sectionPositions[id] = sectionsElements[id].offsetTop;
+  const sectionsElements = {
+    about: document.getElementById("about"),
+    experience: document.getElementById("experience"),
+    projects: document.getElementById("projects"),
+  };
+
+  const sectionPositions = {
+    about: 0,
+    experience: 0,
+    projects: 0,
+  };
+
+  for (const id in sectionsElements) {
+    sectionPositions[id as keyof typeof sectionsElements] =
+      sectionsElements[id as keyof typeof sectionsElements]?.offsetTop ?? 0;
+  }
+
+  window.addEventListener("scroll", () => {
+    const scrollPosition = window.scrollY;
+    const entries = Object.entries(sectionPositions);
+    for (let i = entries.length - 1; i >= 0; i--) {
+      const isInViewport = scrollPosition >= entries[i][1];
+      if (isInViewport) {
+        selectedId = entries[i][0];
+        break;
+      }
     }
+    for (let i = 0; i < sideBarItems.length; i++) {
+      const isSelected = selectedId === sideBarItems[i].dataset.idSidebar;
+      if (!isSelected) {
+        sideBarItems[i].classList.add("not-selected");
+        sideBarItems[i].classList.remove("selected");
 
-    window.addEventListener("scroll", () => {
-      const scrollPosition = window.scrollY;
-      const entries = Object.entries(sectionPositions);
-      for (let i = entries.length - 1; i >= 0; i--) {
-        const isInViewport = scrollPosition >= entries[i][1];
-        if (isInViewport) {
-          selectedId = entries[i][0];
-          break;
-        }
+        const span = sideBarItems[i].nextElementSibling;
+        span?.classList.add("not-selected-text");
+        span?.classList.remove("selected-text");
+      } else {
+        sideBarItems[i].classList.add("selected");
+        sideBarItems[i].classList.remove("not-selected");
+
+        const span = sideBarItems[i].nextElementSibling;
+        span?.classList.remove("not-selected-text");
+        span?.classList.add("selected-text");
       }
-      for (let i = 0; i < sideBarItems.length; i++) {
-        const isSelected = selectedId === sideBarItems[i].dataset.idSidebar;
-        if (!isSelected) {
-          sideBarItems[i].classList.add("not-selected");
-          sideBarItems[i].classList.remove("selected");
-
-          const span = sideBarItems[i].nextElementSibling;
-          span?.classList.add("not-selected-text");
-          span?.classList.remove("selected-text");
-        } else {
-          sideBarItems[i].classList.add("selected");
-          sideBarItems[i].classList.remove("not-selected");
-
-          const span = sideBarItems[i].nextElementSibling;
-          span?.classList.remove("not-selected-text");
-          span?.classList.add("selected-text");
-        }
-      }
-    });
+    }
   });
 </script>

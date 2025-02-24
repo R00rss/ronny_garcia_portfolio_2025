@@ -2,7 +2,9 @@
 import { defaultLang, languages } from "../i18n/ui";
 ---
 
-<ul class="bg-white dark:bg-transparent flex text-xs dark:shadow-[0px_0px_8px_-3px_#ffffff] shadow-[0px_0px_8px_-3px_#000000] w-max rounded-full p-0.5"> 
+<ul
+  class="bg-white dark:bg-transparent flex text-xs dark:shadow-[0px_0px_8px_-3px_#ffffff] shadow-[0px_0px_8px_-3px_#000000] w-max rounded-full p-0.5"
+>
   {
     Object.entries(languages).map(([lang, label]) => {
       const link = lang === defaultLang ? "/" : `/${lang}/`;
@@ -11,30 +13,44 @@ import { defaultLang, languages } from "../i18n/ui";
           data-language={lang}
           class="rounded-full text-gray-500 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 duration-300"
         >
-          <a class="px-2 py-1 block text-base" href={link}>{lang}</a>
+          <a class="px-2 py-1 block text-base" href={link}>
+            {lang}
+          </a>
         </li>
       );
     })
   }
 </ul>
 
-<script is:inline>
-  const languages = ["en", "es"];
-  const defaultLang = "en";
+<script>
+  import { languages, defaultLang } from "../i18n/ui";
+  import { getSectionFromURL } from "@/utils/url";
+
   const url = new URL(window.location.href);
   let lang = url.pathname.split("/")?.[1] ?? defaultLang;
-  if (!languages.includes(lang)) {
+
+  const section = getSectionFromURL(url.toString());
+
+  if (!Object.keys(languages).includes(lang)) {
     lang = defaultLang;
   }
 
+  const items = document.querySelectorAll(
+    "[data-language] > a"
+  ) as NodeListOf<HTMLAnchorElement>;
+
+  Array.from(items).forEach((a) => (a.href = a.href + `#${section}`));
+
   const selectedLi = document.querySelector(`[data-language="${lang}"]`);
+
+  console.log({ selectedLi });
   // style the background color
-  selectedLi.classList.add("dark:bg-primary");
-  selectedLi.classList.add("bg-primary/60");
+  selectedLi?.classList.add("dark:bg-primary");
+  selectedLi?.classList.add("bg-primary/60");
   // style the text color
-  selectedLi.classList.remove("dark:text-slate-200");
-  selectedLi.classList.add("dark:text-black");
+  selectedLi?.classList.remove("dark:text-slate-200");
+  selectedLi?.classList.add("dark:text-black");
   //style the hover effect
-  selectedLi.classList.remove("hover:bg-slate-200");
-  selectedLi.classList.remove("dark:hover:bg-slate-700");
+  selectedLi?.classList.remove("hover:bg-slate-200");
+  selectedLi?.classList.remove("dark:hover:bg-slate-700");
 </script>

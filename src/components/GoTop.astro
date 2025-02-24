@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  type="button"
+  class="group fixed bottom-4 right-4 opacity-0 duration-300 bg-primary/20 shadow-[0px_0px_7px_-2px_#ffffff] h-8 w-8 min-h-8 min-w-8 rounded-full p-1"
+>
+  <Icon class="arrow-shake w-full h-full" name={"ArrowTop"} />
+</button>
+
+<style>
+  @keyframes arrow-shake {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .arrow-shake:hover {
+    animation: arrow-shake 0.5s ease-in-out infinite;
+  }
+</style>
+
+<script>
+    const goTopButton = document.querySelector("button");
+
+    goTopButton?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+  window.addEventListener("scroll", () => {
+    const scrollPosition = window.scrollY;
+    if (scrollPosition > 200) {
+      goTopButton?.classList.add("opacity-100");
+      goTopButton?.classList.remove("opacity-0");
+    } else {
+      goTopButton?.classList.add("opacity-0");
+      goTopButton?.classList.remove("opacity-100");
+    }
+  });
+
+</script>
