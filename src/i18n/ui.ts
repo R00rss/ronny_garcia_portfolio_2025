@@ -37,7 +37,14 @@ export const ui = {
     "month.december": "December",
     "experience.mern_stack_ec.role": "Full Stack Developer",
     "experience.mern_stack_ec.name": "MernStackEc",
-    "experience.mern_stack_ec.description": "Development of integrated automation modules with SAP for Moderna Alimentos, optimizing key processes and improving operational efficiency"
+    "experience.mern_stack_ec.description": "Development of integrated automation modules with SAP for Moderna Alimentos, optimizing key processes and improving operational efficiency",
+    "experience.llacsaa.role": "Full Stack Developer",
+    "experience.llacsaa.name": "LLACSAA S.A.",
+    "experience.llacsaa.description": "Angular, Spring boot, Flask, Nodejs, Docker, Oracle SQL developer",
+    "experience.kimobill.role": "Full Stack Developer",
+    "experience.kimobill.name": "Kimobill Omnicontac S.A",
+    "experience.kimobill.description": "Development of landing pages, websites with React, Flask, Nodejs, MongoDB, MySQL"
+
   },
   es: {
     'nav.home': 'Inicio',
@@ -69,6 +76,12 @@ export const ui = {
     "month.december": "Diciembre",
     "experience.mern_stack_ec.role": "Desarrollador Full Stack",
     "experience.mern_stack_ec.name": "MernStackEc",
-    "experience.mern_stack_ec.description": "Desarrollo de módulos de automatización integrados con SAP para Moderna Alimentos, optimizando procesos clave y mejorando la eficiencia operativa"
+    "experience.mern_stack_ec.description": "Desarrollo de módulos de automatización integrados con SAP para Moderna Alimentos, optimizando procesos clave y mejorando la eficiencia operativa",
+    "experience.llacsaa.role": "Desarrollador Full Stack",
+    "experience.llacsaa.name": "LLACSAA S.A.",
+    "experience.llacsaa.description": "Desarrollador de soluciones en Angular, Spring boot, Flask, Nodejs, Docker, Oracle SQL",
+    "experience.kimobill.role": "Desarrollador Full Stack",
+    "experience.kimobill.name": "Kimobill Omnicontac S.A",
+    "experience.kimobill.description": "Desarrollo de landing pages, sitios web con React, Flask, Nodejs, MongoDB, MySQL"
   },
 } as const;
