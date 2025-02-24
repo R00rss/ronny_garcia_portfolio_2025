@@ -1,0 +1,80 @@
+---
+
+---
+
+<div class="mouse-effect mouse-effect-dark"></div>
+
+<style>
+  :root {
+    --size: 200px;
+    /* for dark mode */
+    --primary-dark: #1c1fd318;
+    --primary-dark-shadow: #1c1fd302;
+    /* for light mode */
+    --primary-light: #e6f4fa;
+    --primary-light-shadow: #abcadb02;
+  }
+  .mouse-effect {
+    scale: 0.3;
+    position: absolute;
+    z-index: -1;
+    top: 100px;
+    left: 100px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 9999px;
+  }
+  .mouse-effect-dark {
+    background-color: var(--primary-dark);
+    box-shadow:
+      0 0 1000px 100px var(--primary-dark-shadow),
+      0 0 1000px 200px var(--primary-dark-shadow),
+      0 0 1000px 300px var(--primary-dark-shadow),
+      0 0 1000px 400px var(--primary-dark-shadow),
+      0 0 1000px 500px var(--primary-dark-shadow),
+      0 0 1000px 600px var(--primary-dark-shadow),
+      0 0 1000px 700px var(--primary-dark-shadow),
+      0 0 1000px 800px var(--primary-dark-shadow),
+      0 0 1000px 900px var(--primary-dark-shadow),
+      0 0 1000px 1000px var(--primary-dark-shadow),
+      0 0 1000px 1100px var(--primary-dark-shadow),
+      0 0 1000px 1200px var(--primary-dark-shadow),
+      0 0 1000px 1300px var(--primary-dark-shadow);
+  }
+
+  .mouse-effect-light {
+    background-color: var(--primary-light);
+    box-shadow:
+      0 0 1000px 100px var(--primary-light-shadow),
+      0 0 1000px 200px var(--primary-light-shadow),
+      0 0 1000px 300px var(--primary-light-shadow),
+      0 0 1000px 400px var(--primary-light-shadow),
+      0 0 1000px 500px var(--primary-light-shadow),
+      0 0 1000px 600px var(--primary-light-shadow),
+      0 0 1000px 700px var(--primary-light-shadow),
+      0 0 1000px 800px var(--primary-light-shadow),
+      0 0 1000px 900px var(--primary-light-shadow),
+      0 0 1000px 1000px var(--primary-light-shadow),
+      0 0 1000px 1100px var(--primary-light-shadow),
+      0 0 1000px 1200px var(--primary-light-shadow),
+      0 0 1000px 1300px var(--primary-light-shadow);
+  }
+</style>
+<script is:inline>
+  function mouseLogic() {
+    const bodyContainer = document.querySelector("#body-container");
+    const mouseEffect = document.querySelector(".mouse-effect");
+
+    const size = 200;
+
+    function getMouseCoordinates(event) {
+      const { pageX, pageY } = event;
+      const x = pageX - size / 2;
+      const y = pageY - size / 2;
+      mouseEffect.style.left = `${x}px`;
+      mouseEffect.style.top = `${y}px`;
+    }
+    bodyContainer.addEventListener("mousemove", getMouseCoordinates);
+  }
+  mouseLogic();
+</script>
