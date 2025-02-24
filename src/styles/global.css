@@ -4,3 +4,31 @@
   /* font-family: "Helvetica Neue", sans-serif; */
   font-family: "Inter Variable", sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Para navegadores WebKit */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme("colors.secondary");
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme("colors.primary");
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme("colors.primary/20");
+}
+
+/* Para Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: theme("colors.primary") theme("colors.secondary");
+}
