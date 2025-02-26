@@ -3,6 +3,7 @@ import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import SectionLayout from "@/layouts/SectionLayout.astro";
 import ExperienceCard from "./ExperienceCard.astro";
 import { getExperienceItems } from "@/data/Experience";
+import FadeOnScroll from "./FadeOnScroll.astro";
 
 const sectionName = "experience";
 
@@ -16,7 +17,9 @@ const experience_items = getExperienceItems(t);
   <h1 class="block sm:hidden text-lg font-bold mb-4 tracking-widest uppercase">
     {t("nav.experience")}
   </h1>
-  <ul>
+  <ul id="experience-container">
     {experience_items.map((item) => <ExperienceCard item={item} />)}
   </ul>
 </SectionLayout>
+
+<FadeOnScroll selectors="#experience-container" threshold={0.3} />

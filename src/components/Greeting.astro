@@ -6,7 +6,11 @@ const t = useTranslations(lang);
 ---
 
 <header class="mb-3 sm:mb-0">
-  <h1 class="text-base text-primary -rotate-6 origin-center w-max -translate-x-4 translate-y-1">{t("home.greeting")}</h1>
+  <h1
+    class="text-base text-primary -rotate-6 origin-center w-max -translate-x-4 translate-y-1"
+  >
+    {t("home.greeting")}
+  </h1>
   <h2
     class="text-6xl font-semibold tracking-tight dark:text-slate-200 text-slate-800"
   >
@@ -17,7 +21,77 @@ const t = useTranslations(lang);
   >
     {t("home.title")}
   </h3>
-  <p class="mt-2 sm:max-w-60 md:max-w-xs leading-normal dark:text-gray-400 text-gray-500 text-base">
+  <p
+    class="mt-2 sm:max-w-60 md:max-w-xs leading-normal dark:text-gray-400 text-gray-500 text-base"
+  >
     {t("home.description")}
   </p>
 </header>
+
+<style>
+  :root {
+    --default-duration: 0.4s;
+    --default-delay: 0.7s;
+  }
+
+  h1 {
+    animation: slide-left-to-right var(--default-duration) ease-in-out
+      var(--default-delay) forwards;
+    opacity: 0;
+  }
+
+  h2 {
+    animation: appears var(--default-duration) ease-in-out var(--default-delay)
+      forwards;
+    opacity: 0;
+  }
+
+  h3 {
+    animation: appears var(--default-duration) ease-in-out var(--default-delay)
+      forwards;
+    opacity: 0;
+  }
+
+  p {
+    transform: rotate(-3deg);
+    animation:
+      appears var(--default-duration) ease-in-out 0.8s forwards,
+      shake 0.5s ease-in-out 1s 4 alternate forwards,
+      return-to-original 0.3s ease-in-out 2.5s forwards;
+    opacity: 0;
+  }
+
+  @keyframes slide-left-to-right {
+    0% {
+      transform: translateX(-100px) rotate(-6deg) translateY(4px);
+    }
+    100% {
+      transform: translateX(-16px) rotate(-6deg) translateY(4px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes appears {
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes shake {
+    0% {
+      transform: rotate(-3deg);
+    }
+    100% {
+      transform: rotate(3deg);
+    }
+  }
+
+  @keyframes return-to-original {
+    0% {
+      transform: rotate(3deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+</style>

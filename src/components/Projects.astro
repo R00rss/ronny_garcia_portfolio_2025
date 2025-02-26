@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import SectionLayout from "@/layouts/SectionLayout.astro";
+import FadeOnScroll from "./FadeOnScroll.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -12,7 +13,38 @@ const sectionName = "projects";
   <h1 class="block sm:hidden text-lg font-bold mb-4 tracking-widest uppercase">
     {t("nav.projects")}
   </h1>
-  <p>
-    
+  <p id="projects-container">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus ipsa
+    culpa omnis inventore nobis sapiente! Asperiores accusamus sit dolor quo
+    temporibus dolore perferendis, eos molestias quaerat provident, numquam ipsa
+    rerum! In facilis quaerat eligendi rerum tempore corrupti quidem,
+    voluptates, inventore, officiis iusto dolores porro nulla assumenda
+    voluptate nihil iure exercitationem? Qui quidem dolor eum enim sequi commodi
+    labore odio architecto! Velit assumenda laboriosam adipisci optio nesciunt
+    cumque id, unde quas quae aperiam consectetur nemo, vitae iure possimus quam
+    commodi dolore veniam nulla sapiente excepturi est culpa animi. Nulla, rem
+    voluptates? Aliquam similique quos minima id porro, consectetur iure ipsa
+    delectus officia quidem molestias doloribus! Odit harum a vero id
+    consequuntur, corrupti molestias, non incidunt eos deserunt sapiente debitis
+    odio fugiat. Omnis harum deserunt ex eaque quae ipsum vero praesentium nam
+    aperiam, delectus odio quidem minus cumque suscipit velit pariatur eligendi
+    dignissimos placeat hic itaque saepe voluptatibus! Iste facilis aliquid
+    impedit. Tempore perferendis perspiciatis nisi necessitatibus mollitia
+    soluta sint pariatur hic officia. Dolorum, voluptates id? Iste, vero. Sit,
+    quam? Accusamus, quas hic! Officia quia exercitationem dolorum quidem
+    corrupti error sed maiores. Voluptas, vero suscipit. Repellendus libero a
+    nobis at non, ipsam aperiam, dicta temporibus animi hic totam? Ullam, vero
+    exercitationem? Esse non, vitae deleniti impedit odit aut neque illo
+    sapiente. Earum? Temporibus dolor totam hic placeat dolorum magni
+    perspiciatis culpa quaerat in pariatur. Vitae assumenda doloremque atque
+    necessitatibus deleniti officia exercitationem est? Pariatur tempore illo
+    nesciunt amet. Perferendis sunt reprehenderit animi! Iusto quos deserunt cum
+    optio quia eligendi fugit neque eos illum reiciendis adipisci quam beatae
+    aut ab reprehenderit laboriosam modi aliquid laudantium rem, animi
+    voluptatem vel eaque corporis architecto? Expedita. Esse, praesentium nam.
+    Nisi eaque magni ipsum temporibus ut provident aliquam, odio possimus
+    fugiat, sint voluptatum aperiam dolor sapiente ipsa quo placeat sit impedit
+    nesciunt vitae. Tenetur nulla corrupti totam!
   </p>
 </SectionLayout>
+<FadeOnScroll selectors="#projects-container" threshold={0.3} />

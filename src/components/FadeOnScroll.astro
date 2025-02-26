@@ -1,0 +1,30 @@
+---
+interface Props {
+  selectors: string;
+  threshold?: number;
+  transitionDuration?: string;
+  transitionDelay?: string;
+}
+
+const { selectors, threshold = 0.5, transitionDuration = "0.8s", transitionDelay = "0.3s" } = Astro.props;
+---
+
+<script define:vars={{ selectors, threshold, transitionDuration, transitionDelay }}>
+  const target = document.querySelector(selectors);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          target.style.opacity = "0";
+          target.style.transition = `opacity ${transitionDuration} ease-out ${transitionDelay}`;
+        } else {
+          target.style.opacity = "1";
+        }
+      });
+    },
+    { threshold: threshold }
+  );
+
+  observer.observe(target);
+</script>
